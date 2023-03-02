@@ -24,11 +24,11 @@ const Nav = () => {
         setTextmobilecolor("max-sm:text-white");
       }
 
-      if (scrollY >= 1160 || scrollY < 580) {
+      if (scrollY >= 1180 || scrollY < 580) {
         setNavcolor("bg-white");
         setTextcolor("text-slate-900");
       }
-      if (scrollY >= 1560 || scrollY < 780) {
+      if (scrollY >= 1580 || scrollY < 780) {
         setNavmobilecolor("max-sm:bg-white");
         setTextmobilecolor("max-sm:text-slate-900");
       }
