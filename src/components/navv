@@ -1,0 +1,49 @@
+import { FaHome, FaPhoneAlt, FaQuestion } from 'react-icons/fa'
+import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+
+
+const Nav = () => {
+    const [navcolor, setNavcolor] = useState("bg-white");
+    const [textcolor, setTextcolor] = useState("text-slate-900");
+    const [scrollY, setScrollY] = useState(0)
+    
+    window.addEventListener('scroll', () => {
+setScrollY(window.scrollY)
+    })
+    
+    useEffect(() => {
+              if (scrollY >= 580) {
+                  setNavcolor("bg-slate-900");
+                  setTextcolor("text-white");
+        }
+        
+        if (scrollY >= 1160 || scrollY < 580) {
+            setNavcolor("bg-white")
+            setTextcolor("text-slate-900");
+              } 
+    },[scrollY])
+  return (
+    <nav className={`h-[8vh] w-full top-0 fixed flex shadow-xl ${navcolor}`}>
+      <div className="px-8 h-full w-full flex justify-between items-center relative">
+        <h1 className="text-xl font-bold text-slate-500">
+          Elv<span className="text-slate-300">i</span>s
+        </h1>
+        <ul
+          className={`flex w-1/3 justify-evenly font-semibold max-lg:absolute max-lg:flex-col max-lg:top-[10vh] max-lg:left-0 max-lg:w-full max-lg:justify-between max-lg:items-center max-lg:h-[50vh] max-lg:bg-white max-lg:py-4 z-50 ${textcolor} `}
+        >
+          <li className="text-md border border-transparent rounded-2xl hover:translate-y-1 hover:shadow-md hover:shadow-slate-500 px-3 py-1 cursor-pointer transition ease-in-out delay-75 flex items-center">
+            <FaHome className="pr-2 text-2xl" /> <Link to="/">Home</Link>
+          </li>
+          <li className="text-md border border-transparent rounded-2xl hover:translate-y-1 hover:shadow-md hover:shadow-slate-500 px-3 py-1 cursor-pointer transition ease-in-out delay-75 flex items-center">
+            <FaPhoneAlt className="pr-2 text-2xl" />
+            <Link to="/contact-me">Contact me</Link>
+          </li>
+              </ul>
+              
+      </div>
+    </nav>
+  );
+}
+
+export default Nav
